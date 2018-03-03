@@ -1,0 +1,26 @@
+.nav-container {
+  display: flex;
+  position: sticky;
+  height: 90px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.links-list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.links-list > li {
+  padding: 0 10px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.links-list > li > a {
+  text-decoration: none;
+  color: black;
+}

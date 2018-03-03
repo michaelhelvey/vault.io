@@ -21,5 +21,7 @@ from web import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('accounts/profile/', views.ProfileView.as_view()),
+    path('about/', views.AboutView.as_view()),
     path('', views.HomeView.as_view())
 ]
