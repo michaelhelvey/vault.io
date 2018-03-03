@@ -21,7 +21,6 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -31,8 +30,7 @@ SECRET_KEY = 'e^56vb%og5$*g@5xqr+u9glay6%rn+u(7m@#z6uuewm%@z#027'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['vault-io.herokuapp.com']
 
 # Application definition
 
