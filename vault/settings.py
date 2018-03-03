@@ -136,7 +136,11 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
-DATABASES['default']['NAME'] = 'vault'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vault'
+    }
+}
+DATABASES['default'].update(dj_database_url.config(
+    conn_max_age=500, ssl_require=-True))
