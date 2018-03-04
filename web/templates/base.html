@@ -9,33 +9,48 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
     <style>
         html,
         body {
             margin: 0;
             padding: 0;
             font-family: 'Lato', sans-serif;
-
+            height: 100%;
         }
     </style>
 </head>
 
 <body>
     <nav class="nav-container">
-        <div class="logo">Vault.io</div>
+        <div class="logo">
+            <a href="/">Vault.io</a>
+        </div>
         <div class="search-container">
-            <input placeholder="Search" />
+            <input class="search-input" placeholder="Search" />
         </div>
         <ul class="links-list">
             <li>
                 <a href="/about/">about</a>
             </li>
             <li>
-                <a href="/posts/new/">post content</a>
+                <a href="/posts/new/">new post</a>
+            </li>
+            <li>
+                {% if user.is_authenticated %}
+                    <a href="/accounts/logout/">log out</a>
+                {% else %}
+                    <a href="/accounts/login/">log in</a>
+                {% endif %}
             </li>
         </ul>
     </nav>
-    {% block content %} {% endblock content %}
+    <div class="body-container">
+        {% block content %} {% endblock content %}
+    </div>
+    <footer class="footer">
+        Copyright &copy; 2018-present Michael Helvey
+    </footer>
 </body>
 
 </html>

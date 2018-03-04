@@ -1,11 +1,31 @@
 .nav-container {
   display: flex;
   position: sticky;
-  height: 90px;
+  height: 70px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 40px;
+  background-color: #34495e;
+  box-shadow: 0px 1px 1px 1px gray;
+}
+
+.footer {
+  height: 50px;
+  background-color: rgb(240, 240, 240);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Karma', seif;
+  font-size: 14px;
+}
+
+.body-container {
+  padding: 0 10px;
 }
 
 .links-list {
@@ -22,5 +42,204 @@
 
 .links-list > li > a {
   text-decoration: none;
+  color: white;
+}
+
+.links-list > li > a:hover {
+  color: lightgray;
+}
+
+.logo {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.logo > a {
+  color: white;
+  text-decoration: none;
+}
+
+.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.search-input {
+  width: 60%;
+  height: 15px;
+  border-radius: 3px;
+  border: 0.5px solid gray;
+  padding: 10px;
+  font-size: 13px;
+  /* box-shadow: 1px 1px 1px 1px black; */
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+/* About page */
+
+/* Home screen */
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.category-card {
+  flex: 3;
+}
+
+.recent-activity-card {
+  flex: 2;
+}
+
+.categories-container {
+  list-style: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.categories-container > li {
+  margin: 10px;
+}
+
+.categories-container > li > a {
   color: black;
+  text-decoration: none;
+}
+
+.categories-container > li > a:hover {
+  color: #34495e;
+}
+
+/* Text Classes */
+
+.section-title {
+  font-weight: bold;
+  color: black;
+  font-size: 24px;
+}
+
+.text-content {
+  font-family: 'Karma', serif;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px darkgray;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+/* Login Styles */
+
+.login-main-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.login-form-container {
+  width: 400px;
+  /* height: 500px; */
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  align-items: center;
+  padding: 0 0 30px 0;
+  box-shadow: 1px 1px 1px 1px darkgray;
+}
+
+.form-header {
+  background-color: rgb(236, 236, 236);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Karma', serif;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  font-family: 'Karma', serif;
+}
+
+.login-form > p {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form > p > label {
+  font-size: 14px;
+}
+
+.login-form > p > label[for='id_remember'] {
+  display: none;
+}
+.login-form > p > input[name='remember'] {
+  display: none;
+}
+
+.login-form > p > input {
+  height: 25px;
+  border-radius: 3px;
+  box-shadow: none;
+  outline: none;
+  border: 0.5px solid darkgray;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.form-buttons-container > button {
+  height: 40px;
+  background-color: #34495e;
+  color: white;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  text-transform: uppercase;
+  box-shadow: 1px 1px 3px 0px black;
+}
+
+.form-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+a.button {
+  margin: 20px;
+  text-transform: uppercase;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+}
+
+a.button:hover {
+  color: darkgray;
+}
+
+.logout-spacer {
+  height: 50px;
 }

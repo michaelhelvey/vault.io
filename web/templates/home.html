@@ -1,1 +1,15 @@
-{% extends "base.html" %} {% block content %} Hello, Vault.io {% endblock content %}
+{% extends "base.html" %} {% block content %}
+<div class="home-container">
+  <div class="card category-card">
+    <div class="section-title">Browse</div>
+    <ul class="categories-container">
+      {% for category in categories %}
+        <li class="category-title"><a href="{{category.get_absolute_url}}">/ &nbsp;&nbsp; {{category.title}}</a></li>        
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="card recent-activity-card">
+    <div class="section-title">Recent Activity</div>
+  </div>
+</div>
+{% endblock content %}

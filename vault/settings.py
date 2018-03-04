@@ -31,7 +31,7 @@ SECRET_KEY = 'e^56vb%og5$*g@5xqr+u9glay6%rn+u(7m@#z6uuewm%@z#027'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vault-io.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'vault-io.herokuapp.com']
 
 # Application definition
 
@@ -45,9 +45,13 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
+    # local
+    'web',
+
     # third party
     'allauth',
     'allauth.account',
+    'allauth.socialaccount'
 ]
 
 SITE_ID = 1
@@ -89,6 +93,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'vault.wsgi.application'
 
@@ -146,6 +151,7 @@ DATABASES = {
     }
 }
 DATABASES['default'].update(dj_database_url.config(
-    conn_max_age=500, ssl_require=-True))
+    conn_max_age=500, ssl_require=False))
 
-django_heroku.settings(locals())
+if not DEBUG:
+    django_heroku.settings(locals())
