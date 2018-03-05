@@ -47,7 +47,7 @@ class CategoryView(ListView):
     paginate_by = 20
 
     def get_queryset(self):
-        queryset = Post.objects.filter(category_id=self.kwargs['category_id'])
+        queryset = Post.objects.filter(category_id=self.kwargs['category_id']).order_by('-createdAt')
         return queryset
 
     def get_context_data(self, **kwargs):
