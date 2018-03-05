@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="category-main-container">
+  <div class="card browse-card">
+    <ul class="categories-container">
+      {% for category in categories %}
+      {% if category.id == current_category.id %}
+        <li class="category-title"><a href="{{category.get_absolute_url}}">/ &nbsp;&nbsp; {{category.title}}</a></li>        
+      {% else %}
+        <li class="category-title no-bold"><a href="{{category.get_absolute_url}}">/ &nbsp;&nbsp; {{category.title}}</a></li>        
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="card posts-list-card">
+    <div class="section-title">Documents in {{current_category.title}}</div>
+      {% for post in object_list %}
+        <div class="post-card">
+          {{post.title}}
+        </div>
+      {% endfor %}
+  </div>
+</div>
+
+
+{% endblock content %}

@@ -23,5 +23,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', views.ProfileView.as_view()),
     path('about/', views.AboutView.as_view()),
+    path('categories/<int:category_id>/', views.CategoryView.as_view()),
+    path('posts/<int:pk>/', views.PostView.as_view()),
     path('', views.HomeView.as_view())
 ]
