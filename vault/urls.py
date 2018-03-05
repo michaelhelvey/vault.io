@@ -24,6 +24,10 @@ urlpatterns = [
     path('accounts/profile/', views.ProfileView.as_view()),
     path('about/', views.AboutView.as_view()),
     path('categories/<int:category_id>/', views.CategoryView.as_view()),
-    path('posts/<int:pk>/', views.PostView.as_view()),
+    path('posts/<int:pk>/', views.PostView.as_view(), name='posts'),
+    path('posts/<int:pk>/update/', views.PostUpdateView.as_view()),
+    path('posts/<int:pk>/delete/', views.PostDeleteView.as_view()),
+    path('posts/search/', views.search, name='search'),
+    path('posts/new/', views.PostCreateView.as_view()),
     path('', views.HomeView.as_view())
 ]

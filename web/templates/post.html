@@ -2,6 +2,11 @@
 
 {% block content %}
 
-{{object.title}}
+<div class="card">
+  <div class="post-detail-title">{{object.title}}</div>
+  <div class="post-detail-title small">§ § §</div>
+  <div class="post-detail-user">Posted by <a href="/users/{{object.user.id}}/">{{object.user.username}}</a> on {{object.createdAt}}</div>
+  <div class="text-content">{{object.content}}</div>
+</div>
 
 {% endblock content %}

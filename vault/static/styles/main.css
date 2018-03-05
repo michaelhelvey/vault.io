@@ -303,6 +303,50 @@ a.button:hover {
 }
 
 .post-card {
-  border: 1px solid black;
-  height: 100px;
+  border-bottom: 0.5px solid lightgray;
+  padding: 10px;
+}
+
+.post-card-title {
+  margin-bottom: 10px;
+}
+
+.post-title {
+  color: #34495e;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.post-title > a {
+  color: #34495e;
+  text-decoration: none;
+}
+
+.post-description {
+  color: rgb(139, 139, 139);
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.post-user {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.post-detail-title {
+  font-family: 'Karma', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.post-detail-user {
+  font-family: 'Karma', sans-serif;
+  text-align:center;
+  margin: 30px 0;
+}
+
+.small {
+  font-size: 14px;
 }

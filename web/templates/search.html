@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card posts-list-card">
+    <div class="section-title post-card-title">Posts containing "{{search_query}}"</div>
+      {% for post in search_results %}
+        <div class="post-card">
+          <div class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></div>
+          <div class="post-description">{{post.content|truncatechars:380}}</div>
+          <div class="post-user">Posted by <span><a href="/users/{{post.user.id}}/">{{post.user.username}}</a></span> on {{post.createdAt}}</div>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock content %}  

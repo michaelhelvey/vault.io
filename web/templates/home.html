@@ -10,9 +10,13 @@
   </div>
   <div class="card recent-activity-card">
     <div class="section-title">Recent Activity</div>
-    {% for post in recent_posts %}
-      <div>{{post.title}}</div>
-    {% endfor %}
+      {% for post in recent_posts %}
+        <div class="post-card">
+          <div class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></div>
+          <div class="post-description">{{post.content|truncatechars:160}}</div>
+          <div class="post-user">Posted by <span><a href="/users/{{post.user.id}}/">{{post.user.username}}</a></span> on {{post.createdAt}}</div>
+        </div>
+      {% endfor %}
   </div>
 </div>
 {% endblock content %}

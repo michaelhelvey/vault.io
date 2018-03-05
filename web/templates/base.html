@@ -27,9 +27,10 @@
             <div class="logo">
                 <a href="/">Vault.io</a>
             </div>
-            <div class="search-container">
-                <input class="search-input" placeholder="Search" />
-            </div>
+            <form class="search-container" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <input class="search-input" name="search_query" placeholder="Search" />
+            </form>
         </div>
         <ul class="links-list">
             <li>
