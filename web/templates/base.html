@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vault.io</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
@@ -17,17 +16,20 @@
             padding: 0;
             font-family: 'Lato', sans-serif;
             height: 100%;
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
-    <nav class="nav-container">
-        <div class="logo">
-            <a href="/">Vault.io</a>
-        </div>
-        <div class="search-container">
-            <input class="search-input" placeholder="Search" />
+    <div class="nav-container">
+        <div class="left-container">
+            <div class="logo">
+                <a href="/">Vault.io</a>
+            </div>
+            <div class="search-container">
+                <input class="search-input" placeholder="Search" />
+            </div>
         </div>
         <ul class="links-list">
             <li>
@@ -44,7 +46,7 @@
                 {% endif %}
             </li>
         </ul>
-    </nav>
+    </div>
     <div class="body-container">
         {% block content %} {% endblock content %}
     </div>
