@@ -8,7 +8,8 @@ class HomeView(TemplateView):
 
     def get_context_data(self):
         return {
-            'categories': Category.objects.order_by('title')
+            'categories': Category.objects.order_by('title'),
+            'recent_posts': Post.objects.order_by('createdAt')
         }
 
 
@@ -24,14 +25,12 @@ class CategoryView(ListView):
     model = Post
     template_name = "category.html"
 
-    def get_queryset(self):
-        self.category = get_object_or_404(Category, id=self.kwargs['category_id'])
-        return Post.objects.filter(category=self.category)
-
     def get_context_data(self):
+        self.category = get_object_or_404(Category, id=self.kwargs['category_id'])
         return {
             'categories': Category.objects.order_by('title'),
-            'current_category': self.category
+            'current_category': self.category,
+            'posts': Post.objects.filter(category=self.category)
         }
 
 

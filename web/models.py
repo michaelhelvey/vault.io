@@ -19,6 +19,7 @@ class Post(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     content = models.TextField()
+    createdAt = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
         return "/posts/{}".format(self.id)

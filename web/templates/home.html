@@ -10,6 +10,9 @@
   </div>
   <div class="card recent-activity-card">
     <div class="section-title">Recent Activity</div>
+    {% for post in recent_posts %}
+      <div>{{post.title}}</div>
+    {% endfor %}
   </div>
 </div>
 {% endblock content %}
