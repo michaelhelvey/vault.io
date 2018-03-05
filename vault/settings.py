@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     # third party
     'allauth',
     'allauth.account',
-    'allauth.socialaccount'
+    'allauth.socialaccount',
+    'tinymce'
 ]
 
 SITE_ID = 1

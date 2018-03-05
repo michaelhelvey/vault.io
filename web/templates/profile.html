@@ -13,14 +13,14 @@
       {% endif %}
     </div>
     <div class="user-url"><a href="{{requested_user.userprofile.url}}">{{requested_user.userprofile.url}}</a></div>
-    <div class="user-description">{{requested_user.userprofile.description}}</div>
+    <div class="user-description">{{requested_user.userprofile.description|safe}}</div>
   </div>
   <div class="card">
     <div class="section-title">{{posts_count}} posts by {{requested_user.username}}:</div>
       {% for post in user_posts %}
       <div class="post-card">
         <div class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></div>
-        <div class="post-description">{{post.content|truncatechars:380}}</div>
+        <div class="post-description">{{post.content|truncatechars:380|safe}}</div>
         <div class="post-user">Posted by <span><a href="/users/{{post.user.id}}/">{{post.user.username}}</a></span> on {{post.createdAt}} in <a href="{{post.category.get_absolute_url}}">{{post.category}}</a></div>
       </div>
     {% endfor %}

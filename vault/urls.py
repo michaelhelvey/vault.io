@@ -21,6 +21,7 @@ from web import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('tinymce/', include('tinymce.urls')),
     path('accounts/profile/', views.ProfileView.as_view()),
     path('about/', views.AboutView.as_view()),
     path('categories/<int:category_id>/', views.CategoryView.as_view()),

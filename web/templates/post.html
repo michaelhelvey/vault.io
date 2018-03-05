@@ -6,7 +6,7 @@
   <div class="post-detail-title">{{object.title}}</div>
   <div class="post-detail-title small">§ § §</div>
   <div class="post-detail-user">Posted by <a href="/users/{{object.user.id}}/">{{object.user.username}}</a> on {{object.createdAt}}</div>
-  <div class="text-content">{{object.content}}</div>
+  <div class="text-content">{{object.content|safe}}</div>
   {% if object.user.id == user.id %}
   <div class="post-detail-buttons">
     <a href="/posts/{{post.id}}/update/">Edit Post</a>

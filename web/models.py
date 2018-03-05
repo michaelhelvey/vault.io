@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from tinymce import models as tinymce_models
 from django.db.models.signals import post_save
 
 # Create your models here.
@@ -18,7 +19,7 @@ class Post(models.Model):
     title = models.CharField(max_length=120)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
-    content = models.TextField()
+    content = tinymce_models.HTMLField()
     createdAt = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):

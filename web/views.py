@@ -5,6 +5,8 @@ from django import http
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from web.models import Category, Post, UserProfile
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from tinymce.widgets import TinyMCE
+from django import forms
 
 def search(request):
     search_query = request.POST['search_query']
@@ -67,6 +69,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['title', 'category', 'content']
     template_name = 'post_form.html'
     success_url = "/posts/{id}/"
+
+    def get_form(self):
+        form = super().get_form()
+        form.fields['content'] = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+        return form
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
