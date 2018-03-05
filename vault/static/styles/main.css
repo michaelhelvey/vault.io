@@ -220,10 +220,10 @@
 }
 
 .login-form > p > label[for='id_remember'] {
-  display: none;
+  display: inline-block;
 }
 .login-form > p > input[name='remember'] {
-  display: none;
+  display: inline-block;
 }
 
 .login-form > p > input {
