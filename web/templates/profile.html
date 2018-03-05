@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load preview_extras %}
 <div class="user-container">
   <div class="card user-card">
     <div class="user-title-container">
@@ -20,7 +21,7 @@
       {% for post in user_posts %}
       <div class="post-card">
         <div class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></div>
-        <div class="post-description">{{post.content|truncatechars:380|safe}}</div>
+        <div class="post-description">{{post.content|truncatechars:380|remove_newlines|safe}}</div>
         <div class="post-user">Posted by <span><a href="/users/{{post.user.id}}/">{{post.user.username}}</a></span> on {{post.createdAt}} in <a href="{{post.category.get_absolute_url}}">{{post.category}}</a></div>
       </div>
     {% endfor %}

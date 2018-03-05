@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{% load preview_extras %}
 <div class="category-main-container">
   <div class="card browse-card">
     <ul class="categories-container">
@@ -19,7 +19,7 @@
       {% for post in posts_list %}
         <div class="post-card">
           <div class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></div>
-          <div class="post-description">{{post.content|truncatechars:380}}</div>
+          <div class="post-description">{{post.content|truncatechars:380|remove_newlines|safe}}</div>
           <div class="post-user">Posted by <span><a href="/users/{{post.user.id}}/">{{post.user.username}}</a></span> on {{post.createdAt}}</div>
         </div>
       {% endfor %}
