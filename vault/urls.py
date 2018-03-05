@@ -29,5 +29,7 @@ urlpatterns = [
     path('posts/<int:pk>/delete/', views.PostDeleteView.as_view()),
     path('posts/search/', views.search, name='search'),
     path('posts/new/', views.PostCreateView.as_view()),
+    path('users/<int:pk>/', views.UserView.as_view()),
+    path('users/<int:pk>/update_profile/', views.UpdateProfileView.as_view()),
     path('', views.HomeView.as_view())
 ]

@@ -154,7 +154,7 @@
 .section-title {
   font-weight: bold;
   color: black;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .text-content {
@@ -349,4 +349,80 @@ a.button:hover {
 
 .small {
   font-size: 14px;
+}
+
+.post-detail-buttons {
+  margin-top: 20px;
+}
+
+.post-detail-buttons > a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #34495e;
+  border-radius: 3px;
+  height: 30px;
+  width: 50px;
+  font-size: 14px;
+}
+
+.post-detail-buttons > a:hover {
+  color: darkgray;
+}
+
+.pagination {
+  font-size: 13px;
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.page-current {
+  margin: 0 10px;
+}
+
+.user-card {
+  font-family: 'Karma', sans-serif
+}
+
+.user-title {
+  font-weight: bold;
+  font-size: 28px;
+  margin: 15px 0;
+}
+
+.user-url > a {
+  text-decoration: none;
+  color: slategray;
+}
+
+.user-url > a:hover {
+  color: black;
+}
+
+.user-description {
+  color: #34495e;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.user-title-container {
+  display: flex;
+}
+
+textarea {
+  font-size: 15px;
+  font-family: 'Karma', serif;
+  line-height: 1.2;
+  padding: 10px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.add-upper-margin {
+  margin-top: 40px;
+}
+
+.wide-form {
+  width: 90%;
 }

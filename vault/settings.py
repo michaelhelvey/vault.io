@@ -156,3 +156,6 @@ DATABASES['default'].update(dj_database_url.config(
 
 if not DEBUG:
     django_heroku.settings(locals())
+
+
+ACCOUNT_EMAIL_VERIFICATION = "none"

@@ -1,1 +1,44 @@
-{% load account %} {% user_display user %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="user-container">
+  <div class="card user-card">
+    <div class="user-title-container">
+      <div class="user-title">{{requested_user.username}}</div>
+      {% if requested_user.id == user.id %}
+      <div class="post-detail-buttons">
+        <a href="/users/{{requested_user.id}}/update_profile/">Edit Profile</a>
+      </div>
+      {% else %}
+      {% endif %}
+    </div>
+    <div class="user-url"><a href="{{requested_user.userprofile.url}}">{{requested_user.userprofile.url}}</a></div>
+    <div class="user-description">{{requested_user.userprofile.description}}</div>
+  </div>
+  <div class="card">
+    <div class="section-title">{{posts_count}} posts by {{requested_user.username}}:</div>
+      {% for post in user_posts %}
+      <div class="post-card">
+        <div class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></div>
+        <div class="post-description">{{post.content|truncatechars:380}}</div>
+        <div class="post-user">Posted by <span><a href="/users/{{post.user.id}}/">{{post.user.username}}</a></span> on {{post.createdAt}} in <a href="{{post.category.get_absolute_url}}">{{post.category}}</a></div>
+      </div>
+    {% endfor %}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

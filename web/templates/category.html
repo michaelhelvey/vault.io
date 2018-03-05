@@ -16,13 +16,28 @@
   </div>
   <div class="card posts-list-card">
     <div class="section-title post-card-title">Documents in {{current_category.title}}</div>
-      {% for post in posts %}
+      {% for post in posts_list %}
         <div class="post-card">
           <div class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></div>
           <div class="post-description">{{post.content|truncatechars:380}}</div>
           <div class="post-user">Posted by <span><a href="/users/{{post.user.id}}/">{{post.user.username}}</a></span> on {{post.createdAt}}</div>
         </div>
       {% endfor %}
+      {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
   </div>
 </div>
 

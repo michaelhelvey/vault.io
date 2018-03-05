@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<form action="" method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm" />
-</form>
+<div class="login-main-container">
+    <div class="login-form-container">
+        <div class="form-header">
+            <h1>Delete Post</h1>
+            <p style="margin: 0 20px;">Are you sure you want to delete "{{object}}" ?</p>
+        </div>
+        <form class="login-form" action="" method="post">{% csrf_token %}
+            {{form.as_p}}
+            <div class="form-buttons-container add-upper-margin">
+                <button type="submit">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock content %}
+

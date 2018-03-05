@@ -1,8 +1,9 @@
 from django.views.generic import TemplateView, ListView, DetailView
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth import get_user_model
 from django import http
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from web.models import Category, Post
+from web.models import Category, Post, UserProfile
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def search(request):
@@ -27,6 +28,11 @@ class HomeView(TemplateView):
 class ProfileView(TemplateView):
     template_name = "profile.html"
 
+    def get_context_data(self):
+        return {
+            user: self.request.user
+        }
+
 
 class AboutView(TemplateView):
     template_name = "about.html"
@@ -35,14 +41,20 @@ class AboutView(TemplateView):
 class CategoryView(ListView):
     model = Post
     template_name = "category.html"
+    context_object_name = "posts_list"
+    paginate_by = 20
 
-    def get_context_data(self):
+    def get_queryset(self):
+        queryset = Post.objects.filter(category_id=self.kwargs['category_id'])
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         self.category = get_object_or_404(Category, id=self.kwargs['category_id'])
-        return {
-            'categories': Category.objects.order_by('title'),
-            'current_category': self.category,
-            'posts': Post.objects.filter(category=self.category).order_by('-createdAt')
-        }
+        context['categories'] = Category.objects.order_by('title')
+        context['current_category'] = self.category
+        return context
+
 
 
 class PostView(DetailView):
@@ -69,8 +81,28 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     fields = ['title', 'category', 'content']
     template_name = 'post_update_form.html'
 
+    def get_login_url(self):
+        return '/posts/{}'.format(self.kwargs['pk'])
+
     def test_func(self):
         return Post.objects.get(pk=self.kwargs['pk']).user.id == self.request.user.id
+
+
+class UpdateProfileView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+
+    model = UserProfile
+    fields = ['url', 'description']
+    template_name = 'profile_update_form.html'
+
+    def get_success_url(self):
+        return '/users/{}'.format(self.kwargs['pk'])
+
+    def get_login_url(self):
+        return '/users/{}'.format(self.kwargs['pk'])
+    
+    def test_func(self):
+        return get_user_model().objects.get(pk=self.kwargs['pk']).userprofile.id == self.request.user.userprofile.id
+
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
@@ -79,7 +111,28 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def get_success_url(self):
         post = Post.objects.get(pk=self.kwargs['pk'])
-        return '/categories/{}/'.format(post.category.id)
+        if (post.category):
+            return '/categories/{}/'.format(post.category.id)
+        else:
+            return '/'
 
     def test_func(self):
         return Post.objects.get(pk=self.kwargs['pk']).user.id == self.request.user.id
+
+
+class UserView(ListView):
+    model = Post
+    paginate_by = 10
+    context_object_name = "user_posts"
+    template_name = "profile.html"
+
+    def get_queryset(self):
+        queryset = Post.objects.filter(user_id=self.kwargs['pk'])
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        requested_user = get_user_model().objects.get(id=self.kwargs['pk'])
+        context['posts_count'] = Post.objects.filter(user=requested_user).count()
+        context['requested_user'] = requested_user
+        return context
