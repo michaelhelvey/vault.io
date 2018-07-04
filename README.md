@@ -1,6 +1,6 @@
 # Vault.io
 
-Vault.io is an open source project that creates a server which serves as the collective notebook of a group of users.
+Vault.io is an open source project that creates a server which serves as the collective notebook of a group of users.  I wrote it up one Sunday afternoon for fun for me and my college roomates.
 
 ## Docs
 
